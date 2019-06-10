@@ -22,8 +22,8 @@ fs.readFile(testFile, 'UTF-8', (err, data) => {
 	//Identify current/starting location
 	var roomDimentionsX = filedata[0].split(' ')[0];
 	var roomDimentionsY = filedata[0].split(' ')[1];
-	var currentX = 1;
-	var currentY = 2;
+	var currentX = filedata[1].split(' ')[0];
+	var currentY = filedata[1].split(' ')[1];
 
 	//split the last line of the .text file into its own array
 	var navigation = filedata[filedata.length - 1].split('');
@@ -53,14 +53,14 @@ fs.readFile(testFile, 'UTF-8', (err, data) => {
 
 		//each directional move should check an see if current position is over a dirtpatch
 		//if there is a dirtpatch, clean and add to counter
-		if (positionIsWithinPatch(currentX, currentY, dirtyPatches)){
+		if (positionIsWithinPatch(currentX, currentY, dirtyPatches)) {
 			dirtyCount++;
 		}
 	});
 
 	//print to console the final X, Y of the hoover
 	//print dirt spot cleaned up
-	console.log(currentX + " " + currentY)
+	console.log(currentX + ' ' + currentY);
 	console.log(dirtyCount);
 
 	function positionIsWithinPatch(x, y, patches) {
